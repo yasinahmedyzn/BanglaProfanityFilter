@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Bangla Profanity Filter</title>
+  <link rel="stylesheet" type="text/css" href="w3.css"/>
+  <link rel="stylesheet" type="text/css" href="w3-color-flat.css"/>
+  <link rel="stylesheet" type="text/css" href="optionPage.css"/>
+</head>
+<body class="w3-content w3-card">
+<div id="page">
+
+<div id="header" class="w3-container">
+  <h2><img class="logo" src="img/bpflogo.jpg"/> Bangla Profanity Filter</h2>
+
+</div>
+
+<div id="menu" class="w3-bar w3-card w3-flat-peter-river">
+  <a href="#" class="w3-bar-item w3-button w3-flat-belize-hole">Settings</a>
+  <a href="#" class="w3-bar-item w3-button">Words</a>
+  <!-- <a href="#" class="w3-bar-item w3-button">Lists</a>
+ <a href="#" class="w3-bar-item w3-button">Domains</a>
+  <a href="#" class="w3-bar-item w3-button">Audio</a>
+  <a href="#" class="w3-bar-item w3-button">Bookmarklet</a>
+  <a href="#" class="w3-bar-item w3-button">Config</a> -->
+  <div class="w3-bar-item w3-button w3-right themes">
+    <div class="sun w3-hide">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M18 12c0-0.811-0.161-1.587-0.455-2.295-0.304-0.735-0.75-1.395-1.303-1.948-0.552-0.552-1.213-0.998-1.948-1.303-0.707-0.293-1.483-0.454-2.294-0.454s-1.587 0.161-2.295 0.455c-0.735 0.304-1.395 0.75-1.948 1.302s-0.998 1.213-1.302 1.948c-0.294 0.708-0.455 1.484-0.455 2.295s0.161 1.587 0.455 2.295c0.304 0.735 0.75 1.395 1.303 1.948 0.552 0.552 1.213 0.998 1.948 1.303 0.707 0.293 1.483 0.454 2.294 0.454s1.587-0.161 2.295-0.455c0.735-0.304 1.395-0.75 1.948-1.303s0.998-1.213 1.303-1.948c0.293-0.707 0.454-1.483 0.454-2.294zM16 12c0 0.544-0.108 1.060-0.303 1.529-0.202 0.489-0.5 0.929-0.869 1.299s-0.81 0.667-1.299 0.869c-0.469 0.195-0.985 0.303-1.529 0.303s-1.060-0.108-1.529-0.303c-0.489-0.202-0.929-0.5-1.299-0.869s-0.667-0.81-0.869-1.299c-0.195-0.469-0.303-0.985-0.303-1.529s0.108-1.060 0.303-1.529c0.202-0.489 0.5-0.929 0.869-1.299s0.81-0.667 1.299-0.869c0.469-0.195 0.985-0.303 1.529-0.303s1.060 0.108 1.529 0.303c0.489 0.202 0.929 0.5 1.299 0.869s0.667 0.81 0.869 1.299c0.195 0.469 0.303 0.985 0.303 1.529zM11 1v2c0 0.552 0.448 1 1 1s1-0.448 1-1v-2c0-0.552-0.448-1-1-1s-1 0.448-1 1zM11 21v2c0 0.552 0.448 1 1 1s1-0.448 1-1v-2c0-0.552-0.448-1-1-1s-1 0.448-1 1zM3.513 4.927l1.42 1.42c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414l-1.42-1.42c-0.391-0.391-1.024-0.391-1.414 0s-0.391 1.024 0 1.414zM17.653 19.067l1.42 1.42c0.391 0.391 1.024 0.391 1.414 0s0.391-1.024 0-1.414l-1.42-1.42c-0.391-0.391-1.024-0.391-1.414 0s-0.391 1.024 0 1.414zM1 13h2c0.552 0 1-0.448 1-1s-0.448-1-1-1h-2c-0.552 0-1 0.448-1 1s0.448 1 1 1zM21 13h2c0.552 0 1-0.448 1-1s-0.448-1-1-1h-2c-0.552 0-1 0.448-1 1s0.448 1 1 1zM4.927 20.487l1.42-1.42c0.391-0.391 0.391-1.024 0-1.414s-1.024-0.391-1.414 0l-1.42 1.42c-0.391 0.391-0.391 1.024 0 1.414s1.024 0.391 1.414 0zM19.067 6.347l1.42-1.42c0.391-0.391 0.391-1.024 0-1.414s-1.024-0.391-1.414 0l-1.42 1.42c-0.391 0.391-0.391 1.024 0 1.414s1.024 0.391 1.414 0z"></path>
+      </svg>
+    </div>
+    <div class="moon">
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M21.996 12.882c0.022-0.233-0.038-0.476-0.188-0.681-0.325-0.446-0.951-0.544-1.397-0.219-0.95 0.693-2.059 1.086-3.188 1.162-0.696 0.047-1.399-0.027-2.077-0.226-0.656-0.192-1.29-0.501-1.874-0.932-0.655-0.484-1.181-1.074-1.575-1.729-0.409-0.68-0.676-1.432-0.792-2.206s-0.082-1.571 0.11-2.342c0.184-0.741 0.514-1.46 0.999-2.115 0.142-0.191 0.216-0.435 0.191-0.691-0.053-0.55-0.542-0.952-1.092-0.898-1.117 0.109-2.186 0.399-3.172 0.843-1.005 0.452-1.925 1.065-2.723 1.808-0.883 0.82-1.618 1.801-2.159 2.901-0.523 1.064-0.863 2.238-0.978 3.485-0.125 1.347 0.024 2.658 0.402 3.878 0.392 1.266 1.031 2.431 1.863 3.433s1.86 1.843 3.033 2.461c1.13 0.595 2.392 0.982 3.739 1.106s2.659-0.025 3.878-0.403c1.266-0.392 2.431-1.031 3.433-1.863s1.843-1.86 2.461-3.033c0.595-1.13 0.982-2.392 1.106-3.739zM19.567 14.674c-0.126 0.351-0.276 0.689-0.447 1.014-0.493 0.937-1.166 1.76-1.969 2.427s-1.735 1.178-2.747 1.491c-0.973 0.302-2.021 0.421-3.102 0.321s-2.089-0.41-2.99-0.884c-0.937-0.493-1.76-1.166-2.427-1.969s-1.178-1.735-1.491-2.747c-0.302-0.973-0.421-2.021-0.321-3.102 0.092-1 0.365-1.938 0.782-2.786 0.43-0.878 1.018-1.661 1.725-2.319 0.64-0.595 1.377-1.086 2.183-1.449 0.179-0.081 0.362-0.155 0.548-0.223-0.092 0.257-0.171 0.516-0.236 0.778-0.256 1.029-0.302 2.091-0.147 3.121s0.51 2.032 1.056 2.941c0.527 0.875 1.23 1.663 2.1 2.306 0.775 0.573 1.622 0.986 2.5 1.243 0.907 0.266 1.846 0.364 2.772 0.302 0.752-0.050 1.496-0.207 2.21-0.465z"></path>
+      </svg>
+    </div>
+  </div>
+  <a href="#" class="w3-bar-item w3-button w3-right">Help</a>
+ <!-- <a href="#" class="w3-bar-item w3-button w3-right">Stats</a>
+  <a href="#" class="w3-bar-item w3-button w3-right">Test</a> -->
+</div>
+
+<div id="main" class="w3-hide">
+<div id="settingsPage" class="w3-container">
+  <h4 class="sectionHeader">Filter Method</h4>
+
+  <div id="filterMethod">
+    <label>
+      <input id="filterCensor" class="w3-radio" type="radio" name="filterMethod" value="CENSOR">
+      Censor<span class="notes">(পতিতা: পতিতা = প**)</span>
+    </label>
+
+    <br/>
+    <label>
+      <input id="filterSubstitute" class="w3-radio" type="radio" name="filterMethod" value="SUBSTITUTE">
+      Substitute<span class="notes">(পতিতা > মেয়ে: পতিতা = মেয়ে)</span>
+    </label>
+
+    <br/>
+    <label>
+      <input id="filterRemove" class="w3-radio" type="radio" name="filterMethod" value="REMOVE">
+      Remove<span class="notes">(পতিতা: পতিতালয়  = লয়)</span>
+    </label>
+
+    <br/>
+    <label>
+      <input id="filterOff" class="w3-radio" type="radio" name="filterMethod" value="OFF">
+      Off<span class="notes">(disabled)</span>
+    </label>
+  </div>
+
+  <div id="censorSettings" class="w3-hide">
+    <h4 class="sectionHeader">Censor Settings</h4>
+    <label>
+      <input id="preserveFirst" type="checkbox" class="w3-check">
+      Preserve the first letter
+      <span class="notes">(পতিতা: পতিতা = প**)</span>
+    </label>
+    <br />
+    <label>
+      <input id="preserveLast" type="checkbox" class="w3-check">
+      Preserve the last letter
+      <span class="notes">(পতিতা: পতিতা = **তা)</span>
+    </label>
+    <br />
+    <label>Censor character:
+      <select id="censorCharacterSelect" class="w3-select w3-border small" style="margin-top:8px;">
+        <option value="*">*</option>
+        <option value="&">&</option>
+        <option value="$">$</option>
+        <option value="#">#</option>
+        <option value="@">@</option>
+        <option value="^">^</option>
+        <option value="-">-</option>
+        <option value="_">_</option>
+      </select>
+    </label>
+    <br />
+    <label>Fixed length:
+      <select id="censorFixedLengthSelect" class="w3-select w3-border small" style="margin-top:8px;">
+        <option value="0">Original</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+      </select>
+    </label>
+  </div>
+
+  <div id="substitutionSettings" class="w3-hide">
+    <h4 class="sectionHeader">Substitution Settings</h4>
+    <label>
+      <input id="preserveCase" type="checkbox" class="w3-check">
+      Preserve case of filtered words
+      <span class="notes">(পতিতা: পতিতা = মেয়ে)</span>
+    </label>
+    <br />
+    <label>
+      <input id="substitutionMark" type="checkbox" class="w3-check">
+      Mark substituted words with [ ]
+      <span class="notes">(পতিতা: পতিতা = [মেয়ে])</span>
+    </label>
+    <div style="padding-top:8px;">
+      <label>Default Substitution
+        <input id="defaultWordSubstitutionText" class="w3-input w3-border small" style="display:inline;">
+      </label>
+    </div>
+  </div>
+
+  <div id="generalOptions">
+    <h4 class="sectionHeader">General Settings</h4>
+    <label>
+      <input id="showCounter" type="checkbox" class="w3-check">
+      Show number of filtered words
+      <span class="notes">(Shown over the extension icon)</span>
+    </label>
+    <br>
+    <label>
+      <input id="showSummary" type="checkbox" class="w3-check">
+      Show summary of filtered words
+      <span class="notes">(Shown in the extension popup)</span>
+    </label>
+    <br>
+    <label>
+      <input id="showUpdateNotification" type="checkbox" class="w3-check">
+      Show update notification
+    </label>
+  </div>
+
+  <div id="defaultOptions">
+    <h4 class="sectionHeader">Default Settings (for new words/phrases)</h4>
+    <label>
+      <input id="defaultWordRepeat" type="checkbox" class="w3-check">
+      Match repeated characters
+      <span class="notes">(পতিতা: পতিতাতাতা)</span>
+    </label>
+    <br>
+    <label>
+      <input id="defaultWordSeparators" type="checkbox" class="w3-check">
+      Match separator characters
+      <span class="notes">([-_ ] পতিতা matches: প-তি _তা)</span>
+    </label>
+    <div id="defaultMatchMethod" style="padding-top:8px;">
+      <label>Match Method
+        <select id="defaultWordMatchMethodSelect" class="w3-select w3-border small"></select>
+      </label>
+    </div>
+  </div>
+</div>
+
+<div id="wordsPage" class="w3-container w3-hide">
+  <div class="w3-half">
+    <h4 class="sectionHeader">Words & Phrases</h4>
+    <select id="wordList" class="w3-select w3-border small"></select>
+    <label><input id="filterWordList" type="checkbox" class="w3-check">  Filter</label>
+
+    <h4 class="sectionHeader">Word/Phrase</h4>
+    <input id="wordText" class="w3-input w3-border small" type="text" pattern=".+">
+
+    <div id="wordSubstitution" class="w3-hide">
+      <h4 class="sectionHeader">Substitution</h4>
+      <input id="substitutionText" class="w3-input w3-border small"/>
+      <label><input id="substitutionCase" type="checkbox" class="w3-check">  Case-sensitive</label>
+    </div>
+
+    <div id="wordMatchMethod">
+      <h4 class="sectionHeader">Match Method</h4>
+      <label>
+        <input id="wordMatchExact" type="radio" class="w3-radio" name="wordMatchMethod" value="EXACT">
+        Exact<span class="notes">(পতিতা: প**** বা পতিতালয় ব্যবসার জগত)</span>
+      </label>
+
+      <br>
+      <label>
+        <input id="wordMatchPartial" type="radio" class="w3-radio" name="wordMatchMethod" value="PARTIAL">
+        Partial<span class="notes">(পতিতা: প**** বা ****লয় ব্যবসার জগত)</span>
+      </label>
+
+      <br>
+      <label>
+        <input id="wordMatchWhole" type="radio" class="w3-radio" name="wordMatchMethod" value="WHOLE">
+        Whole<span class="notes">(পতিতা: প**** বা ****** ব্যবসার জগত)</span>
+      </label>
+
+      <br>
+      <label>
+        <input id="wordMatchRegex" type="radio" class="w3-radio" name="wordMatchMethod" value="REGEX">
+        Regex
+      </label>
+    </div>
+  </div>
+
+  <div class="w3-half w3-right">
+    <div id="wordWordlistDiv" class="w3-hide">
+      <h4 class="sectionHeader">Include in Wordlists</h4>
+      <div id="wordlistSelections"></div>
+    </div>
+
+    <h4 class="sectionHeader">Other</h4>
+    <label>
+      <input id="wordMatchRepeated" type="checkbox" class="w3-check" name="matchRepeat"/>
+      Match repeated characters<span class="notes">(পতিতা: পতিতাতাতা)</span>
+    </label>
+
+    <br>
+    <label>
+      <input id="wordMatchSeparators" type="checkbox" class="w3-check" name="matchSeparators"/>
+      Match separators<span class="notes">([-_ ] পতিতা matches: প-তি _তা)</span>
+    </label>
+  </div>
+
+  <div class="w3-container w3-center" style="width: 100%;">
+    <button id="wordSave" class="w3-btn w3-round-large w3-flat-peter-river">SAVE</button>
+    <button id="wordRemove" class="w3-btn w3-round-large w3-flat-pomegranate">REMOVE</button>
+    <button id="wordRemoveAll" class="w3-btn w3-round-large w3-flat-pomegranate">REMOVE ALL</button>
+    <button id="bulkWordEditorButton" class="w3-btn w3-right w3-round-large w3-flat-peter-river">BULK EDITOR</button>
+  </div>
+</div>
+
+<div id="listsPage" class="w3-container w3-hide">
+  <div class="w3-half w3">
+    <h4 class="sectionHeader">Whitelist</h4>
+    <select id="whitelist" class="w3-select w3-border small"></select><span class="notes">(* Case-sensitive)</span>
+
+    <h4 class="sectionHeader">Word/Phrase</h4>
+    <input id="whitelistText" class="w3-input w3-border small" type="text" pattern=".+">
+
+    <br>
+    <label>
+      <input id="whitelistInsensitive" type="radio" class="w3-radio" name="whitelistCase" value="insensitive">
+      Case-insensitive<span class="notes">(doghouse: Don't filter "DogHouse")</span>
+    </label>
+
+    <br>
+    <label>
+      <input id="whitelistSensitive" type="radio" class="w3-radio" name="whitelistCase" value="sensitive">
+      Case-sensitive<span class="notes">(Doghouse: Don't filter "Doghouse")</span>
+    </label>
+
+    <br>
+    <div class="w3-left" style="padding-top: 20px;">
+      <button id="whitelistSave" class="w3-btn w3-round-large w3-flat-peter-river">SAVE</button>
+      <button id="whitelistRemove" class="w3-btn w3-round-large w3-flat-pomegranate">REMOVE</button>
+    </div>
+  </div>
+
+  <div class="w3-half w3-right">
+    <label style="display: block;">
+      <h4 class="sectionHeader" style="display: inline-block; height: 30px;">Wordlists</h4>
+      <input id="wordlistsEnabled" type="checkbox" class="w3-check">
+    </label>
+
+    <div id="wordlistContainer" class="w3-hide">
+      <select id="wordlistSelect" class="w3-select w3-border small"></select>
+
+      <h4 class="sectionHeader">Name</h4>
+      <input id="wordlistText" class="w3-input w3-border small" type="text" pattern="^\S.*" required style="display: inline; margin-right: 8px;">
+      <button id="wordlistRename" class="w3-btn w3-round-large w3-flat-peter-river">RENAME</button>
+
+      <h4 class="sectionHeader">Default Text Wordlist</h4>
+      <select id="textWordlistSelect" class="w3-select w3-border small"></select><span class="notes"></span>
+
+      <div id="audioWordlistDiv" class="w3-hide">
+        <h4 class="sectionHeader">Default Audio Wordlist</h4>
+        <select id="audioWordlistSelect" class="w3-select w3-border small"></select><span class="notes"></span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="domainsPage" class="w3-container w3-hide">
+  <div id="disabledDomainContainer" class="w3-half">
+    <h4 class="sectionHeader">Domain Mode</h4>
+
+    <div id="domainMode">
+      <label>
+        <input id="domainModeNormal" type="radio" class="w3-radio" name="domainMode" value="normal">
+        Normal
+        <span class="notes">Filter all domains</span>
+      </label>
+
+      <br>
+      <label>
+        <input id="domainModeMinimal" type="radio" class="w3-radio" name="domainMode" value="minimal">
+        Minimal
+        <span class="notes">Only filter enabled domains</span>
+      </label>
+    </div>
+  </div>
+
+  <div id="domainRightContainer" class="w3-half w3-right">
+    <h4 class="sectionHeader">Domains</h4>
+    <select id="domainSelect" class="w3-select w3-border small" style="display:block"></select>
+    <h4 class="sectionHeader">Domain</h4>
+    <input id="domainText" class="w3-input w3-border small" type="text" pattern="^[a-zA-Z0-9\.-]+\.[a-zA-Z0-9\.-]+$"/>
+    <span class="notes">Example: "google.com" or "mail.google.com"</span>
+
+    <div style="padding-top: 8px;">
+      <label id="domainDisabledLabel" class="w3-hide">
+        <input id="domainDisabledCheck" type="checkbox" class="w3-check">
+        Disabled
+        <span class="notes">Don't filter pages on this domain</span>
+      </label>
+      <label id="domainEnabledLabel" class="w3-hide">
+        <input id="domainEnabledCheck" type="checkbox" class="w3-check">
+        Enabled
+        <span class="notes">Filter pages on this domain</span>
+      </label>
+      <h4 class="sectionHeader">Mode</h4>
+      <select id="domainModeSelect" class="w3-select w3-border small"></select>
+    </div>
+
+    <div id="domainWordlistContainer" class="w3-hide">
+      <h4 class="sectionHeader">Text Wordlist</h4>
+      <select id="domainWordlistSelect" class="w3-select w3-border small"></select><span class="notes"></span>
+
+      <div id="domainAudioWordlistContainer" class="w3-hide">
+        <h4 class="sectionHeader">Audio Wordlist</h4>
+        <select id="domainAudioWordlistSelect" class="w3-select w3-border small"></select><span class="notes"></span>
+      </div>
+    </div>
+
+    <div style="padding-top: 16px;">
+      <button id="domainSave" class="w3-btn w3-round-large w3-flat-peter-river">SAVE</button>
+      <button id="domainRemove" class="w3-btn w3-round-large w3-flat-pomegranate">REMOVE</button>
+    </div>
+  </div>
+</div>
+
+<div id="audioPage" class="w3-container w3-hide">
+  <p>Mute audio during video playback when a filtered word is detected in the captions/subtitles (which must be enabled). <i>Effectiveness is dependent on the quality/timing of the text accompanying the video.</i> <a href="https://github.com/richardfrost/AdvancedProfanityFilter/wiki/Audio". target="_blank">Learn more</a>.</p>
+
+  <button id="supportedAudioSites" class="w3-btn w3-round-large w3-flat-peter-river" style="margin-bottom: 15px; display: block;">View Supported Sites</button>
+
+  <label>
+    <input id="muteAudio" type="checkbox" class="w3-check">
+    Mute audio on supported video sites
+  </label>
+
+  <div id="muteAudioOptionsContainer" class="w3-hide">
+    <div class="w3-twothird">
+      <h4 class="sectionHeader">Mute Method</h4>
+      <div id="audioMuteMethod">
+        <label>
+          <input id="audioMuteMethodTab" type="radio" class="w3-radio" name="audioMuteMethod" value="0">
+          Browser tab
+        </label>
+
+        <br>
+        <label>
+          <input id="audioMuteMethodVideo" type="radio" class="w3-radio" name="audioMuteMethod" value="1">
+          Video volume
+        </label>
+      </div>
+
+      <h4 class="sectionHeader">Captions/Subtitles</h4>
+      <div id="audioSubtitleSelection">
+        <label>
+          <input id="audioShowAllSubtitles" type="radio" class="w3-radio" name="audioShowSubtitles" value="0">
+          Show all
+        </label>
+
+        <br>
+        <label>
+          <input id="audioShowOnlySubtitles" type="radio" class="w3-radio" name="audioShowSubtitles" value="1">
+          Show only filtered
+        </label>
+
+        <br>
+        <label>
+          <input id="audioShowOnlySubtitles" type="radio" class="w3-radio" name="audioShowSubtitles" value="2">
+          Show only unfiltered
+        </label>
+
+        <br>
+        <label>
+          <input id="audioHideSubtitles" type="radio" class="w3-radio" name="audioShowSubtitles" value="3">
+          Hide all
+        </label>
+      </div>
+
+      <h4 class="sectionHeader">Other</h4>
+      <div id="audioOther">
+        <label>
+          Filler audio
+          <select id="fillerAudioSelect" class="w3-select w3-border small">
+            <option value="">None</option>
+            <option value="beep">Beep</option>
+            <option value="crickets">Crickets</option>
+            <option value="static">Static</option>
+          </select>
+          <span class="notes">(Must use "Video volume" mute method)</span>
+        </label>
+
+        <br>
+        <label>
+          <input id="muteAudioOnly" type="checkbox" class="w3-check">
+          Only mute audio
+          <span class="notes">(Disable text filter)</span>
+        </label>
+
+        <br>
+        <label>
+          <input id="muteCueRequireShowing" type="checkbox" class="w3-check">
+          Require captions/subtitles to be showing
+          <span class="notes">(Only for "cue" mode)</span>
+        </label>
+
+        <br>
+        <label>YouTube muting min:
+          <input id="audioYouTubeAutoSubsMin" class="w3-input w3-border updateYouTubeAutoLimits" type="text" pattern="([0-9]*[.])?[0-9]+" style="display:inline;">
+        </label>
+        <label>max:
+          <input id="audioYouTubeAutoSubsMax" class="w3-input w3-border updateYouTubeAutoLimits" type="text" pattern="([0-9]*[.])?[0-9]+" style="display:inline;">
+        </label>
+        <span class="notes">(Only for auto captions; 0.5 = half second)</span>
+      </div>
+    </div>
+    <div class="w3-third w3-right">
+      <h4 class="sectionHeader">Custom Sites (Advanced)</h4>
+      <textarea id="customAudioSitesText" class="w3-input w3-border w3-card" style="width:300px;height:350px;font-size:11px;" spellcheck="false"></textarea>
+      <button id="customAudioSitesSave" class="w3-btn w3-round-large w3-flat-peter-river" style="margin-top: 16px;">SAVE</button>
+      <a href="https://github.com/richardfrost/AdvancedProfanityFilter/wiki/Custom-Audio-Muting-Site" class="notes" target="_blank">How to add a custom site</a>
+    </div>
+  </div>
+</div>
+
+<div id="bookmarkletPage" class="w3-container w3-hide">
+  <h4 class="sectionHeader">Bookmarklet</h4>
+  <p>This feature allows you to create a Bookmarklet that can run the filter on a device that can't install Advanced Profanity Filter. For more information, please see the <a href="https://github.com/richardfrost/AdvancedProfanityFilter/wiki/Bookmarklet" target="_blank">Bookmarklet wiki page</a>.</p>
+
+  <div id="bookmarkletConfigInputs">
+    <label>
+      <input id="bookmarkletConfigDefault" type="radio" class="w3-radio" name="bookmarkletConfig" value="default">
+      Use default config
+    </label>
+    <br>
+    <label>
+      <input id="bookmarkletConfigCustom" type="radio" class="w3-radio" name="bookmarkletConfig" value="custom" checked>
+      Use my config
+    </label>
+  </div>
+
+  <div id="bookmarkletCustomConfig">
+    <br>
+    <button id="bookmarkletFile" class="w3-btn w3-round-large w3-flat-peter-river">Download Bookmarklet File</button>
+    <span class="notes">Download this file and upload it a supported site listed on the page mentioned above</span>
+
+    <h4 class="sectionHeader">Hosted File URL:</h4>
+    <input id="bookmarkletHostedURL" type="url" required class="w3-input w3-border" style="width:500px;" placeholder="Public URL of the Bookmarklet file"></input>
+  </div>
+
+  <h4 class="sectionHeader">Bookmarklet:</h4>
+  <a id="bookmarkletLink" href="#0" class="w3-btn w3-round-large w3-flat-peter-river w3-flat-silver disabled">APF</a>
+  <span class="notes">Drag to your bookmarks bar or copy the URL</span>
+</div>
+
+<div id="configPage" class="w3-container w3-hide">
+  <h4 class="sectionHeader">Configuration</h4>
+  <label style="display:block;"><input id="configInlineInput" type="checkbox" class="w3-check">  Inline editor</label>
+  <div style="padding-top:16px;padding-bottom:16px;width:500px;">
+    <input type="file" id="importFileInput" accept=".json" style="display:none"/>
+    <button id="configExport" class="w3-btn w3-round-large w3-flat-peter-river">EXPORT</button>
+    <button id="configImport" class="w3-btn w3-round-large w3-flat-peter-river">IMPORT</button>
+    <button id="configReset" class="w3-btn w3-round-large w3-flat-pomegranate w3-right">RESTORE DEFAULTS</button>
+  </div>
+  <textarea id="configText" class="w3-input w3-border w3-card w3-hide" style="width:500px;height:550px;font-size:11px;" spellcheck="false"></textarea>
+
+  <div id="setPasswordContainer" style="width:500px;">
+    <h4 class="sectionHeader">Password</h4>
+    <input id="setPassword" class="w3-input w3-border small" style="display:inline">
+    <button id="setPasswordBtn" class="w3-btn w3-round-large w3-flat-pomegranate w3-right">REMOVE</button>
+  </div>
+</div>
+
+<div id="statsPage" class="w3-container w3-hide">
+  <h4 class="sectionHeader">Stats</h4>
+  <label>
+    <input id="collectStats" type="checkbox" class="w3-check">
+    Collect stats
+    <span class="notes">(Only stored locally)</span>
+  </label>
+
+  <button id="statsReset" class="w3-btn w3-round-large w3-flat-pomegranate w3-right">RESET</button>
+
+  <h4 class="sectionHeader">Summary</h4>
+  <div id="statsSummaryContainer">
+    <table id="statsSummaryTable" class="w3-table w3-border w3-bordered w3-card w3-small">
+      <tbody>
+        <tr>
+          <td>Total words filtered</td>
+          <td id="statsSummaryTotal"></td>
+        </tr>
+        <tr>
+          <td>Total audio mutes</td>
+          <td id="statsSummaryMutes"></td>
+        </tr>
+        <tr>
+          <td>Tracking since</td>
+          <td id="statsSummarySince"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h4 class="sectionHeader">Words Filtered</h4>
+  <div id="statsWordContainer">
+    <table id="statsWordTable" class="w3-table w3-striped w3-border w3-bordered w3-card w3-small">
+      <thead class="w3-flat-peter-river">
+        <tr>
+          <th>Word</th>
+          <th>Text</th>
+          <th>Audio</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+<div id="testPage" class="w3-container w3-hide">
+  <h4 class="sectionHeader">Test</h4>
+  <textarea id="testText" class="w3-input w3-border w3-card"></textarea>
+  <h4 class="sectionHeader">Filtered</h4>
+  <div id="filteredTestText" class="w3-panel w3-leftbar w3-border-grey w3-flat-silver"></div>
+</div>
+
+<div id="helpPage" class="w3-container w3-hide">
+<!--  <a href="https://github.com/richardfrost/AdvancedProfanityFilter/wiki" target="_blank">Wiki</a>
+  <a href="https://github.com/richardfrost/AdvancedProfanityFilter/releases" target="_blank">Changelog</a>
+  <a href="https://github.com/richardfrost/AdvancedProfanityFilter/issues" target="_blank">Support</a>
+  <a href="mailto:richard@richardfrost.info?Subject=Advanced%20Profanity%20Filter">Created by Richard Frost</a>
+  <a href="https://github.com/richardfrost/AdvancedProfanityFilter/releases" target="_blank" class="w3-right" id="helpVersion">2.24.1</a> -->
+  <br>
+
+  <div id="helpContainer">
+    <p>Welcome to BanglaProfanityFilter<!-- a profanity filter built for <a target="_blank" href="https://chrome.google.com/webstore/detail/advanced-profanity-filter/piajkpdbaniagacofgklljacgjhefjeh">Chrome</a>, <a target="_blank" href="https://addons.mozilla.org/firefox/addon/advanced_profanity_filter">Firefox</a>, <a target="_blank" href="https://microsoftedge.microsoft.com/addons/detail/lhnbdlbhcokmgpjenkjolnhdnkphnkam">Edge</a>, and <a target="_blank" href="https://addons.opera.com/en/extensions/details/advanced-profanity-filter/">Opera</a>.</p> -->
+    <h1 id="settings">Settings</h1>
+    <h3 id="filter-settings">Filter Settings</h3>
+    <p>There are three modes for the filter to operate in, each with different sub-settings to fine-tune your experience.</p>
+    <h4 id="censor-mode">Censor Mode</h4>
+    <p>In Censor mode, actions are taken to hide offensive words through masking them in some fashion. Here is a run down of options and an explanation of each.</p>
+    <ul>
+    <li><strong>Preserve First Letter</strong> - This option will preserve the first letter of a word/phrase, but mask the other letters with a chosen placeholder (Default: <code>*</code>)</li>
+    <li><strong>Preserve Last Letter</strong> - Like the previous option, except this will preserve the last letter of a word/phrase</li>
+    <li><strong>Censor Character</strong> - Set the character to mask letters with. (Default: <code>*</code>)</li>
+    <li><strong>Fixed Length</strong> - Set a fixed length for words masked by the filter. If No fixed length is selected, the word will be the original length. This may help to make it difficult to guess what the word was (Default: <code>No fixed length</code>)</li>
+    </ul>
+    <h4 id="substitution-mode">Substitution Mode</h4>
+    <p>In Substitution mode, offensive words are replaced by a less offensive synonym. In this mode most of the configuration you do will be in the &quot;Words&quot; tab, where you can fine-tune your list of words/phrases and what you would like to replace them with.</p>
+    <ul>
+    <li><strong>Preserve case</strong> - Preserve the original case of the filtered word. (Default: <code>Enabled</code>).</li>
+    <li><strong>Mark substituted words</strong> - Marks substituted words by surrounding them with <code>[</code> and <code>]</code>.</li>
+    <li><strong>Default Substitution</strong> - This will be used as the substitution for words that don&#39;t have a set substitution.</li>
+    </ul>
+    <h4 id="remove-mode">Remove Mode</h4>
+    <p>When selected, the offensive word will simply be removed completely from the page, with no indicator that it was ever there. Note that this can sometimes lead to strange sentences.</p>
+    <h4 id="off-mode">Off Mode</h4>
+    <p>This mode disables filtering and is useful for detecting words without modifying the page. You can see the list of matching words found in the extension popup. The summary will list each found word once per page. Stats will not be captured, because words aren&#39;t being filtered. This essentially results in the filter &quot;being disabled&quot; and applies to every domain. If you want filtering to resume, please choose one of the above mentioned filter modes.</p>
+   <!-- <h3 id="global-matching-method">Global Matching Method</h3>
+    <p>The matching method will dictate how the filter matches words from the word list. By default, the <code>Partial Match</code> mode is selected. <em>All matching methods are case-insensitive</em>.</p>
+    <ul>
+    <li><strong>Exact Match</strong> - Requires a full match, which means it only matches words as defined in the word list.  </li>
+    <li><strong>Partial Match</strong> - Will match part of a word, so if a word defined in the list is part of a word, it will be filtered.</li>
+    <li><strong>Whole Match</strong> - Like the partial match, except this mode will apply to the entire word, not just the part of the word that matches.</li>
+    <li><strong>Per-Word Match</strong> - This allows you to specify one of the above match methods for each word, which gives you a lot more power to customize the filter for your needs.</li>
+    <li><strong>Regular Expression Match</strong> - This is an advanced method that only can be applied per word. It is a blank slate for creating a regular expression and will not be auto-escaped like the other methods. All entries will be <code>gi</code>. Here are examples of how to re-create a the exact and partial match methods for the word <code>word</code>:<ul>
+    <li>Exact: <code>\bword\b</code></li>
+    <li>Partial: <code>word</code></li>
+    </ul>
+    </li>
+    </ul>
+    <h3 id="general-settings">General Settings</h3>
+    <p>These settings apply to both the <strong>Censor</strong> and <strong>Substitution</strong> filter modes:</p>
+    <ul>
+    <li><strong>Show number of filtered words</strong> - Show a counter on the extension button with the number of filtered words on the current page.<ul>
+    <li><strong>Blue</strong>: Normal mode</li>
+    <li><strong>Red</strong>: Advanced mode</li>
+    <li><strong>Green</strong>: Audio Muting mode (Shows even when no words have been filtered)</li>
+    </ul>
+    </li>
+    <li><strong>Show summary of filtered words</strong> - Show a summary of the words filtered on the current page.</li>
+    <li><strong>Filter word list in Options</strong> - This option will filter the word list in the options page.</li>
+    <li><strong>Show update notification</strong> - Show a notification when the extension gets updated.</li>
+    </ul>
+    <h3 id="default-settings-for-new-wordphrases">Default Settings (for new word/phrases)</h3>
+    <ul>
+    <li><strong>Match repeated characters</strong> - This option will match repeated characters in words. They must still appear in the same order. This should be managed per-word to help avoid false-positives.</li>
+    <li><strong>Match separators</strong> - Control the default setting used with new words for matching separators (<code>&#39;-&#39;, &#39;_&#39; &amp; &#39; &#39;</code>). When enabled, words/phrases that contain those characters inside them will still be filtered. This should be managed per-word to help avoid false-positives.</li>
+    <li><strong>Match Method</strong> - When new words are added they will automatically be assigned this match method.</li>
+    </ul>
+    <h1 id="words">Words</h1>
+    <p>The words tab allows you to perform several actions (Some options are unavailable based on other settings):</p>
+    <ul>
+    <li>Add new words/phrases.</li>
+    <li>Modify existing words/phrases.</li>
+    <li>Remove existing words/phrases.</li>
+    <li>Configure <code>match repeated characters</code> in words.</li>
+    <li>Set the substitution (replacement) for a word/phrase (Only when filter in <code>Substitution</code> mode).<ul>
+    <li>Case-sensitive: The substitution will respect the provided case (Example: <code>DoG</code>). (Note: <em>This supersedes the <code>preserveCase</code> option for the current word</em>)</li>
+    </ul>
+    </li>
+    <li>Words/phrases can also be added by selecting them on a web page and then choosing the <code>Add selection to filter</code> option from the context (right-click) menu. New words will use the settings found in the &quot;Default Settings (for new word/phrases)&quot; section.</li>
+    <li>Match repeated characters - Match words with repeated characters (must still be in same order).</li>
+    <li>Match separators - Words/phrases that contain (<code>&#39;-&#39;, &#39;_&#39; &amp; &#39; &#39;</code>) inside them will be filtered.</li>
+    </ul>
+    <h3 id="bulk-editor">Bulk Editor</h3>
+    <p>The bulk editor lets you see all your words and their options in a table format, and make multiple changes at once. This is also the easiest way to assign words to wordlists. In this view you can remove words, add words, or adjust the options for words. If you have several words you would like to add to the Filter, there is a box in the bottom-left corner that you can put one word/phrase per line to import. Once you have made your desired modifications, click the save button. A prompt will appear asking to confirm the action. When you click OK, all of words will be replaced with what is in the bulk editor. Because this is a big operation, the prompt also includes a &quot;Backup&quot; button, which will create a backup of your settings before any changes are made. Its recommended to have a backup, just in case. Once you have confirmed that everything looks right, and you&#39;re happy with the changes feel free to delete the backup file.</p>
+    <h1 id="lists">Lists</h1>
+    <h3 id="whitelist">Whitelist</h3>
+    <p>The Word Whitelist provides a mechanism to list words/phrases that should NOT be filtered. Whitelist entries can be case sensitive (case matters). For example, if you added the word &quot;dog&quot; to the filter, but don&#39;t want &quot;Dog&quot; (capitalized) to be filtered, you could add &quot;Dog&quot; as a case-sensitive whitelisted word and it will no longer be filtered.</p>
+    <h3 id="wordlists">Wordlists</h3>
+    <p>Wordlists allow you to create collections of words for specific purposes. For instance, you could have a &quot;Parent&quot; list, where some words are not filtered, or you could create a &quot;Muting&quot; list which is used for audio muting. Another example could be a wordlist that excludes (or includes) religious references. Wordlists could even be used for different languages (English, Spanish, etc) if you don&#39;t want to mix them.</p>
+    <p>On this page, you can rename wordlists and set which wordlist should be used for text and audio muting by default. You can set which wordlists are used per-domain by using the Popup window while visiting the desired page, or by going to the Domain tab in the options page.</p>
+    <p>The fastest way to adjust which words are included in a wordlist is by using the Bulk Editor found in the Words tab.</p>
+    <p><em>Currently only 6 wordlists are supported.</em></p>
+    <h1 id="domains">Domains</h1>
+    <p>This tab allows you to adjust the filter&#39;s settings on specific domains.</p>
+    <h3 id="domain-mode">Domain Mode:</h3>
+    <ul>
+    <li><strong>Normal: <em>(default)</em></strong> Filter all domains unless specifically disabled</li>
+    <li><strong>Minimal:</strong> Only filter pages that are specifically enabled</li>
+    </ul>
+    <h3 id="domains-1">Domains:</h3>
+    <p>Adjust the domain list for the currently selected mode. To match google.com and all its sub-domains, simply add <code>google.com</code>. If you want to just match Gmail, you can add <code>mail.google.com</code>.</p>
+    <p>When browsing a web page, you can also toggle the filter for the current domain from the context (right-click) menu, or using the extension&#39;s Popup menu.</p>
+    <p><em>Note: Do not include the protocol (ex. <code>http://</code>), or anything after the domain name.</em></p>
+    <h3 id="advanced-mode">Advanced Mode:</h3>
+    <p><em><strong>WARNING</strong>: This mode will result in lower performance.</em></p>
+    <p>Handle matching text that is split between multiple elements on the page. This is not usually necessary.</p>
+    <p><em>Example:</em></p>
+    <pre><code class="language-html">&lt;span&gt;some text to fil&lt;/span&gt;&lt;span&gt;ter&lt;/span&gt;
+    </code></pre>
+    <p>On the page, this would look like: &quot;some text to filter&quot;, but the extension (without advanced mode) would see <code>some text to fil</code>, and <code>ter</code>. If you were trying to filter the word <code>text</code>, it would work as expected (because &quot;text&quot; isn&#39;t split across elements). If you were trying to filter the word <code>filter</code>, it would fail without Advanced mode being turned on, because it doesn&#39;t match on <code>some text to fil</code>, or <code>ter</code>. This is not a common practice, and is only needed in a very small number of websites.</p>
+    <h3 id="deep-mode">Deep Mode:</h3>
+    <p><em><strong>WARNING</strong>: This mode will result in lower performance.</em></p>
+    <p>Filter additional elements on the page that are usually not processed. If you notice that words are not being filtered and Advanced mode doesn&#39;t work, try this mode. Deep mode can be especially helpful on pages that heavily utilize the Web Components/Shadow DOM.</p>
+    <h3 id="wordlists-1">Wordlists</h3>
+    <p>Adjust which wordlist should be used for text and audio muting on the selected domain.</p>
+    <p><em>Tip: You can choose <code>Default</code>, which will set it to the default set in the Lists page.</em></p>
+    <h1 id="audio">Audio</h1>
+    <p>Mute audio during video playback when a filtered word is detected in the subtitles/captions (which must be enabled) on a supported site. The effectiveness of this feature is completely dependent on the quality and timing of the subtitles accompanying the video. For more information, please see the <a href="https://github.com/richardfrost/AdvancedProfanityFilter/wiki/Audio">Audio wiki</a>.</p>
+    <p><em>Note: If the &quot;Show number of filtered words&quot; option is enabled, the badge will be green when audio muting is enabled on a supported site.</em></p>
+    <ul>
+    <li><strong>Mute audio on supported video sites</strong> - Enables the feature. Without this no audio filtering will occur.</li>
+    <li><strong>Mute Method</strong> - Controls which method to use for muting audio<ul>
+    <li>Browser Tab - Disables all audio from the current browser tab</li>
+    <li>Video Volume - Changes the video volume to 0 when necessary (Required for Filler Audio)</li>
+    </ul>
+    </li>
+    <li><strong>Subtitles</strong> - Controls which subtitles will be visible.<ul>
+    <li>Show all subtitles <em>(default)</em></li>
+    <li>Show only filtered subtitles - Least distracting</li>
+    <li>Show only unfiltered subtitles</li>
+    <li>Hide all subtitles - This may make it difficult to know what is happening when the audio is muted</li>
+    </ul>
+    </li>
+    <li><strong>Filler Audio</strong> - Replace the silence while muting with a filler sound. (Must use &quot;Video volume&quot; mute method)</li>
+    <li><strong>Only mute audio</strong> - This will disable the text filter, and only perform filtering/muting on supported video sites.
+    This mode will disable the text filter everywhere, and only mute audio (and filter subtitles) on supported sites.</li>
+    <li><strong>Require subtitles to be showing</strong> - This setting is only for sites using the &quot;cue&quot; mode, and will only filter when subtitles are set to &quot;showing&quot; for the current video. If enabled, this typically means there is a manual step involved in turning on the subtitles (varies by site) to enable audio muting through the filter.</li>
+    <li><strong>YouTube Minimum Muting</strong> - Set a minimum amount of time (in seconds) that the filter will mute matched words in a YouTube video using auto-generated subtitles. <em>(The default is 0)</em></li>
+    <li><strong>Custom Sites</strong> - Add support for <a href="https://github.com/richardfrost/AdvancedProfanityFilter/wiki/Audio#custom-audio-sites-advanced">Custom Audio Muting Sites</a>.</li>
+    </ul>
+    <h1 id="bookmarklet">Bookmarklet</h1>
+    <p>The bookmarklet allows you to run a minimal version of the filter on devices that can&#39;t install the full version. It is an advanced tool, and requires several steps to set it up. Learn more <a href="https://github.com/richardfrost/AdvancedProfanityFilter/wiki/Bookmarklet">here</a>.</p>
+    <h1 id="config">Config</h1>
+    <p>This tab allows you to control your configuration for the filter.</p>
+    <ul>
+    <li><strong>Export</strong> - Export your current settings as a JSON object. Useful if you want to backup your settings or share them with others.</li>
+    <li><strong>Import</strong> - Import settings as a JSON object. This is a full replace of your config, so I <strong>strongly</strong> recommend taking a backup (Export) before doing this. </li>
+    <li><strong>Restore Defaults</strong> - This restores all settings back to their defaults.</li>
+    </ul>
+    <p><em>NOTE: Importing or Restoring defaults will export your current config, just in case you forgot to. You will need to copy and save it elsewhere if you want it.</em></p>
+    <h3 id="password">Password</h3>
+    <p>At the bottom of the page there is a prompt for you to set a password to protect the Options and Pop-up pages. This may be useful to keep others from modifying your settings for the extension. This does not prevent a user from disabling or removing the extension. This is not a secure mechanism. Your password is stored in plain-text, so do not reuse an established password.</p>
+    <ul>
+    <li>To set a password: Enter the desired password in the box and click <code>Set</code>. You will now be prompted for the password when opening the Options page.</li>
+    <li>To remove a password: Leave the password box blank and click <code>Remove</code>.</li>
+    <li>If you forget your password, please contact me for information on how to recover it.</li>
+    </ul>
+    <h1 id="test">Test</h1>
+    <p>Here you can write/paste text into the test area and see the filtered output in real time. This provides a way to test new changes without having to leave settings.</p>
+    <h1 id="stats">Stats</h1>
+    <p>View filtering statistics such as how many words have been filtered, and how many times audio has been muted while watching a video. You can also disable gathering statistics on this page, or choose to reset them. Statistics are only stored locally (they never leave your device), and are not included in a configuration backup.</p>
+    <h1 id="popup">Popup</h1>
+    <p>The popup provides access to some quick settings:</p>
+    <ul>
+    <li><strong>Domain Toggle</strong> - Switch to turn the filter on/off for the current domain.</li>
+    <li><strong>Advanced Mode</strong> - Switch Advanced Mode on/off for the current domain.</li>
+    <li><strong>Filter</strong> - Change the filter mode. <strong>This is a global setting and affects all pages.</strong></li>
+    <li><strong>Text Wordlist</strong> - Change the active wordlist for text for the current domain (Only when wordlists are enabled)</li>
+    <li><strong>Audio Wordlist</strong> - Change the active wordlist for audio for the current domain (Only when both wordlists and audio muting are enabled, and this is an audio page).</li>
+    <li><strong>Summary</strong> - A summary will appear when words have been filtered on the current page detailing what was filtered. The words are censored, but the original word can be seen by hovering over a word.</li>
+    </ul>
+    <p>In addition to the above, there are links to the Options page and support pages.</p>
+    <h1 id="context-menu">Context Menu</h1>
+    <p>The context-menu (right-click) menu also provides access to some quick settings:</p>
+    <ul>
+    <li><strong>Add selection to filter</strong> - Adds the current selection to the filter and refreshes the page (useful when you come across a word you would like to add to the filter) <em>(Only available when text is selected)</em></li>
+    <li><strong>Disable once</strong> - Turn the filter off for the current tab once (until reload or page navigation)</li>
+    <li><strong>Toggle for tab</strong> - Turn the filter on/off for the current tab (any domain)</li>
+    <li><strong>Toggle for domain</strong> - Turn the filter on/off for the current domain</li>
+    <li><strong>Toggle advanced for domain</strong> - Switch the Advanced Mode on/off for the current domain</li>
+    <li><strong>Options</strong> - Open the options page</li>
+    </ul>
+  </div>
+</div>
+</div>
+</div> -->
+
+<div id="bulkWordEditorModal" class="w3-modal">
+  <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="width: 98%;">
+    <header class="w3-container w3-flat-peter-river"><h5 class="modalTitle"></h5></header>
+    <div class="w3-container w3-margin w3-padding">
+      <div class="tableContainer w3-card">
+        <table id="bulkWordEditorTable" class="w3-table-all w3-tiny w3-hoverable">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="w3-margin-top">
+        <textarea id="bulkAddWordsText" class="batchAddWord w3-left w3-margin-right" style="width:300px;height:50px;font-size:11px;" spellcheck="false" placeholder="Bulk add words (one word/phrase per line)"></textarea>
+        <button class="modalBulkAddWords w3-btn w3-round-large w3-flat-peter-river">BULK ADD WORDS</button>
+        <div class="w3-right">
+          <button class="modalAddWord w3-btn w3-round-large w3-flat-peter-river">ADD WORD</button>
+          <button class="modalCancel w3-btn w3-round-large w3-flat-peter-river">CANCEL</button>
+          <button class="modalSave w3-btn w3-round-large w3-flat-pomegranate">SAVE</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="confirmModal" class="w3-modal">
+  <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+    <header class="w3-container w3-flat-peter-river"><h5 id="confirmModalTitle"></h5></header>
+    <div class="w3-container w3-padding w3-margin">
+      <div id="confirmModalContent"></div>
+      <span class="confirmBackupButton w3-left w3-hide">
+        <button id="confirmModalBackup" class="w3-btn w3-round-large w3-flat-peter-river" style="margin-top:16px">BACKUP</button>
+      </span>
+      <span class="w3-right">
+        <button id="confirmModalCancel" class="w3-btn w3-round-large w3-flat-silver" style="margin-top:16px">CANCEL</button>
+        <button id="confirmModalOK" class="w3-btn w3-round-large w3-flat-peter-river" style="margin-top:16px">OK</button>
+      </span>
+    </div>
+  </div>
+</div>
+
+<div id="passwordModal" class="w3-modal">
+  <div class="w3-modal-content w3-card-4 w3-animate-opacity">
+    <header class="w3-container w3-flat-peter-river"><h5>Enter Password</h5></header>
+    <div class="w3-container w3-padding w3-margin">
+      <input id="passwordInput" class="w3-input w3-border" style="display:inline" type="password">
+      <button id="submitPassword" class="w3-btn w3-round-large w3-flat-peter-river w3-right" style="margin-top:16px">SUBMIT</button>
+    </div>
+  </div>
+</div>
+
+<div id="statusModal" class="w3-modal">
+  <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+    <header class="w3-container w3-red"><h5 id="statusModalTitle"></h5></header>
+    <div class="w3-container w3-padding w3-margin">
+      <div id="statusModalContent"></div>
+      <div class="w3-right">
+        <button id="statusModalOK" class="w3-btn w3-round-large w3-flat-peter-river" style="margin-top:16px">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="supportedAudioSitesModal" class="w3-modal">
+  <div class="w3-modal-content w3-card-4 w3-animate-zoom">
+    <header class="w3-container w3-flat-peter-river"><h5 class="modalTitle"></h5></header>
+    <div class="w3-container w3-padding w3-margin">
+      <div class="w3-container">
+        <div id="modalContentLeft" class="w3-half">
+          <h4 class="sectionHeader">Sites</h4>
+          <select id="siteSelect"></select>
+        </div>
+        <div id="modalContentRight" class="w3-half w3-right">
+          <h4 class="sectionHeader">Site Config</h4>
+          <textarea class="w3-input w3-border w3-card" spellcheck="false" readonly></textarea>
+        </div>
+      </div>
+      <div class="w3-right">
+        <button class="modalOK w3-btn w3-round-large w3-flat-peter-river" style="margin-top:16px">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="uncaughtErrors"></div>
+<script src="showErrors.js"></script>
+
+<script src="optionPage.js"></script>
+</body>
+</html>

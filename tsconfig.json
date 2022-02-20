@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "allowJs": true,
+    "target": "esnext",
+    "noEmit": true,
+    "lib": ["es2017", "dom", "dom.iterable"]
+  },
+  "include": [
+    "./src/script/**/*.ts"
+  ]
+}

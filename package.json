@@ -1,0 +1,249 @@
+{
+  "name": "BanglaProfanityFilter",
+  "version": "2.24.1",
+  "description": "A browser extension to filter profanity from webpages.",
+  "node": "^12.20.0 || ^14.13.1 || >=16.0.0",
+  "repository": {
+    "type": "",
+    "url": ""
+  },
+  "keywords": [
+    "Profanity",
+    "Filter"
+  ],
+  "author": "Team GameHax",
+  "license": "",
+  "bugs": {
+    "url": ""
+  },
+  "homepage": "",
+  "scripts": {
+    "build:libs": "tsc -p ./src/script/lib/tsconfig.json",
+    "build:static": "node bin/copy-static.mjs",
+    "build:test-sm": "babel src/script --out-dir built --extensions \".ts,.tsx\" --source-maps inline",
+    "build:test": "babel src/script --out-dir ./test/built --extensions \".ts,.tsx,.js\"",
+    "build": "npm run build:static && npm run package:webpack",
+    "clean": "node bin/clean.mjs",
+    "package:bookmarklet": "webpack --config bin/bookmarklet.webpack.config.js",
+    "package:extension": "node bin/package-extension.mjs",
+    "package:webpack": "webpack --config bin/webpack.config.js",
+    "package": "npm run build && npm run package:bookmarklet && npm run package:extension",
+    "test:addon": "npx addons-linter ./extension-firefox.zip",
+    "test:all": "npm run test && npm run test:lint:tests && npm run test:addon",
+    "test:cov": "npm run build:test && nyc --reporter=lcov --reporter=text node_modules/mocha/bin/_mocha",
+    "test:debug": "node --inspect-brk node_modules/mocha/bin/_mocha --reporter tap",
+    "test:lint:all": "npm run test:lint && npm run test:lint:bin && npm run test:lint:tests",
+    "test:lint:bin": "eslint \"bin/**/*.*js\"",
+    "test:lint:nibble": "npx eslint-nibble \"src/**/*.ts\"",
+    "test:lint:tests": "eslint \"test/**/*.spec.js\"",
+    "test:lint": "eslint \"src/**/*.ts\"",
+    "test:nocov": "node_modules/mocha/bin/_mocha",
+    "test:types": "tsc --noEmit",
+    "test": "npm run test:lint && npm run test:types && npm run test:cov",
+    "type-check:watch": "npm run type-check -- --watch",
+    "update:help": "node bin/update-help.mjs",
+    "watch": "node bin/watch.js"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/plugin-proposal-class-properties": "^7.13.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.14.2",
+    "@babel/polyfill": "^7.12.1",
+    "@babel/preset-env": "^7.14.2",
+    "@babel/preset-typescript": "^7.13.0",
+    "@babel/register": "^7.13.16",
+    "@types/chrome": "^0.0.141",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.24.0",
+    "addons-linter": "^3.5.0",
+    "adm-zip": "git+https://github.com/cthackers/adm-zip.git",
+    "babel-loader": "^8.2.2",
+    "chai": "^4.3.4",
+    "chokidar": "^3.5.1",
+    "download": "^8.0.0",
+    "eslint": "^7.26.0",
+    "fs-extra": "^10.0.0",
+    "marked": "^2.0.4",
+    "mocha": "^8.4.0",
+    "nyc": "^15.1.0",
+    "terser-webpack-plugin": "^5.1.2",
+    "typescript": "^4.2.4",
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0"
+  },
+  "babel": {
+    "presets": [
+      "@babel/typescript",
+      [
+        "@babel/preset-env",
+        {
+          "modules": "commonjs",
+          "targets": {
+            "node": "current"
+          }
+        }
+      ]
+    ],
+    "plugins": [
+      "@babel/proposal-class-properties",
+      "@babel/proposal-object-rest-spread"
+    ]
+  },
+  "eslintConfig": {
+    "extends": [
+      "eslint:recommended",
+      "plugin:@typescript-eslint/recommended"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {}
+    },
+    "plugins": [
+      "@typescript-eslint"
+    ],
+    "rules": {
+      "array-bracket-spacing": [
+        "warn",
+        "never"
+      ],
+      "arrow-parens": [
+        "warn",
+        "always"
+      ],
+      "comma-spacing": "warn",
+      "indent": [
+        "warn",
+        2,
+        {
+          "SwitchCase": 1
+        }
+      ],
+      "no-console": "warn",
+      "no-control-regex": [
+        "off"
+      ],
+      "no-prototype-builtins": "off",
+      "no-shadow": "warn",
+      "no-undef": [
+        "off"
+      ],
+      "no-unused-vars": [
+        "off"
+      ],
+      "no-useless-escape": [
+        "off"
+      ],
+      "object-curly-spacing": [
+        "warn",
+        "always"
+      ],
+      "prefer-const": [
+        "error",
+        {
+          "destructuring": "all"
+        }
+      ],
+      "quotes": [
+        "error",
+        "single",
+        "avoid-escape"
+      ],
+      "semi": [
+        "error",
+        "always"
+      ],
+      "@typescript-eslint/ban-ts-comment": [
+        "warn",
+        {
+          "ts-ignore": "allow-with-description"
+        }
+      ],
+      "@typescript-eslint/explicit-function-return-type": "off",
+      "@typescript-eslint/explicit-member-accessibility": "off",
+      "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/naming-convention": [
+        "error",
+        {
+          "selector": "class",
+          "format": [
+            "PascalCase"
+          ],
+          "leadingUnderscore": "allow",
+          "trailingUnderscore": "allow"
+        },
+        {
+          "selector": "classProperty",
+          "modifiers": [
+            "static",
+            "readonly"
+          ],
+          "format": [
+            "camelCase",
+            "UPPER_CASE"
+          ],
+          "leadingUnderscore": "allow",
+          "trailingUnderscore": "allow"
+        },
+        {
+          "selector": "interface",
+          "format": [
+            "PascalCase"
+          ],
+          "leadingUnderscore": "forbid",
+          "trailingUnderscore": "forbid"
+        },
+        {
+          "selector": "variable",
+          "format": [
+            "camelCase",
+            "UPPER_CASE"
+          ],
+          "leadingUnderscore": "allow",
+          "trailingUnderscore": "allow"
+        },
+        {
+          "selector": "default",
+          "format": [
+            "camelCase"
+          ],
+          "leadingUnderscore": "allow",
+          "trailingUnderscore": "allow"
+        }
+      ],
+      "@typescript-eslint/no-empty-function": "off",
+      "@typescript-eslint/no-explicit-any": "off",
+      "@typescript-eslint/no-inferrable-types": "off",
+      "@typescript-eslint/no-unused-vars": [
+        "error",
+        {
+          "vars": "all",
+          "args": "none"
+        }
+      ],
+      "@typescript-eslint/no-use-before-define": "off",
+      "@typescript-eslint/type-annotation-spacing": "error"
+    }
+  },
+  "mocha": {
+    "reporter": "dot",
+    "require": [
+      "@babel/register"
+    ],
+    "spec": [
+      "test/**/*.spec.js"
+    ]
+  },
+  "nyc": {
+    "cwd": "test/",
+    "exclude": [
+      "**/*.spec.js",
+      "built/vendor/**/*"
+    ]
+  },
+  "dependencies": {
+    "latest-version": "^6.0.0"
+  }
+}

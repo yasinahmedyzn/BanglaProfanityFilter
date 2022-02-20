@@ -1,0 +1,218 @@
+/* || HTML Elements */
+
+html {
+  --blue: #3498db; /* .w3-flat-peter-river */
+}
+
+body {
+  font-family: Arial;
+  width: 250px;
+  height: 100%;
+  max-height: 600px;
+  background-color: #eee;
+  padding: 0;
+  margin: 0;
+}
+
+body.dark {
+  background: #202020;
+  color: #fff;
+}
+
+a:link, a:visited {
+  color: #333;
+  font-size: 10px;
+}
+
+a:hover, a:active {
+  color: #222;
+  font-size: 10px;
+}
+
+h4 {
+  margin-bottom: 5px;
+}
+
+/* || Page */
+
+#logo {
+  width: 64px;
+  height: 64px;
+  margin: 1rem;
+  margin-left: 45px;
+  text-align: center;
+}
+
+.container {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+/* Advanced checkbox */
+.checkbox {
+  margin-left: 8px;
+}
+
+.checkboxLabel {
+  line-height: 34px;
+}
+
+/* Filter and Wordlist select dropboowns */
+.selectLabel {
+  line-height: 39px;
+  padding-left: 25px;
+  text-align: left;
+}
+
+.smallSelect {
+  width: 150px;
+  float: right;
+  margin-right: 25px;
+}
+
+/* Summary table */
+#summary {
+  overflow: auto;
+  max-height: 180px;
+  margin-bottom: 8px;
+}
+
+#summary table tbody .summaryTooltip {
+  position: absolute;
+  left: 0;
+  bottom: 18px
+}
+
+.options {
+  width: 200px;
+  margin-left: 25px;
+}
+
+/* Options button */
+#options {
+  margin: 0;
+  transition: 0.2s;
+  text-align: center;
+  cursor: pointer;
+  font-weight: normal;
+  width: 80%;
+}
+
+#options:hover {
+  background-color: #ddd;
+}
+
+/* Footer */
+#footer {
+  width: 100%;
+  padding: 15px 0;
+  background: #ccc;
+  text-align: center;
+  margin-top: 8px;
+}
+
+#footer.dark {
+  background: #202020;
+  color: #fff;
+}
+
+#footer.dark a {
+  color: #fff;
+}
+
+#gettingStarted {
+  color: var(--blue);
+  font-weight: bold;
+}
+
+.divider {
+  border-bottom: solid #ccc 1px;
+  width: 200px;
+  margin: auto;
+}
+
+/* || Slider (enabled/disabled) */
+
+/* Hide default HTML checkbox */
+.switch input {
+  display: none;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  width: 60px;
+  height: 34px;
+  float: right;
+  right: 45px;
+  top: 35px;
+}
+
+input:checked + .slider {
+  background-color: var(--blue);
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px var(--blue);
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+}
+
+/* Rounded slider */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* || Utility */
+
+.disabled {
+  cursor: not-allowed !important;
+}
+
+.unselectable {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Uncaught Errors */
+#uncaughtErrors P {
+  color: red;
+  font-size: 12px;
+  line-height: 1;
+}
+
+#uncaughtErrors P:first-child {
+  font-weight: bolder;
+}
